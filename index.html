@@ -11,7 +11,7 @@
 <meta name="theme-color" content="#16153D">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Noto+Sans+Telugu:wght@400;500;600;700&family=Noto+Serif+Telugu:wght@500;600;700&family=Playfair+Display:ital,wght@1,500;1,600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Noto+Sans+Telugu:wght@400;500;600;700&family=Noto+Serif+Telugu:wght@500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,500;1,600&display=swap" rel="stylesheet">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2316153D'/%3E%3Cpath d='M10 14 C24 30 30 38 32 46 C34 38 40 30 54 14' fill='none' stroke='%235CC6D0' stroke-width='6' stroke-linecap='round'/%3E%3Cpath d='M12 26 C24 38 30 42 32 50 C34 42 40 38 52 26' fill='none' stroke='%23DD659E' stroke-width='6' stroke-linecap='round'/%3E%3C/svg%3E">
 
 <style>
@@ -72,6 +72,19 @@ section[id]{scroll-margin-top:76px}
 .btn--ghost:hover{border-color:#fff;background:rgba(255,255,255,.08)}
 .btn--line{border-color:var(--rose-500);color:var(--rose-600);background:transparent}
 .btn--line:hover{background:var(--rose-50)}
+
+/* ---------- language toggle ---------- */
+.lang{display:inline-flex;padding:3px;border-radius:999px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18)}
+.lang button{border:0;background:transparent;color:rgba(255,255,255,.78);padding:7px 15px;min-height:34px;border-radius:999px;font-size:14px;font-weight:600;line-height:1.2;font-family:var(--sans)}
+.lang button[lang=te]{font-family:"Noto Sans Telugu","Kohinoor Telugu",sans-serif}
+.lang button[aria-pressed="true"]{background:#fff;color:var(--night)}
+.lang button:not([aria-pressed="true"]):hover{color:#fff}
+/* English mode: Latin typography instead of Telugu faces */
+html[lang=en]{--te:var(--sans);--te-serif:"Playfair Display",Georgia,serif}
+html[lang=en] .hero h1{font-weight:600;line-height:1.2;font-size:clamp(34px,5.4vw,60px);max-width:13em}
+html[lang=en] .h2{font-weight:600;line-height:1.25}
+html[lang=en] .step h3{font-weight:600}
+html[lang=en] .hero__sub,html[lang=en] .lede,html[lang=en] .step p,html[lang=en] .bub,html[lang=en] .callout,html[lang=en] .visit p{line-height:1.75}
 
 /* ---------- brand lockup ---------- */
 .brand{display:flex;align-items:center;gap:12px}
@@ -312,6 +325,9 @@ section[id]{scroll-margin-top:76px}
 }
 @media (max-width:720px){
   body{font-size:16px}
+  .lang button{padding:7px 12px;font-size:13.5px}
+  .brand__word b{font-size:20px}
+  .brand__mark{width:38px}
   .bar{display:flex}
   .step{grid-template-columns:48px minmax(0,1fr);gap:4px 18px}
   .step__txt,.step--noimg .step__txt{grid-column:2}
@@ -374,6 +390,7 @@ section[id]{scroll-margin-top:76px}
       <span class="brand__word"><b>HALCYON</b><small>PAIN MANAGEMENT CENTRE</small></span>
     </a>
     <div class="top__right">
+      <div class="lang" role="group" aria-label="Language"><button type="button" data-l="te" lang="te">తెలుగు</button><button type="button" data-l="en" lang="en">English</button></div>
       <span class="top__tag">NRI Parent Knee Care</span>
       <a class="btn btn--wa" data-wa="hero" href="#"><svg><use href="#wa"/></svg>WhatsApp</a>
     </div>
@@ -390,10 +407,10 @@ section[id]{scroll-margin-top:76px}
         <div class="clock"><small id="c1n">Dubai</small><b id="c1t">--:--</b></div>
         <div class="clock"><small>Hyderabad</small><b id="c2t">--:--</b></div>
       </div>
-      <h1>మీరు దూరంగా ఉన్నా, మీ <span class="en">Parents</span> <span class="en">Knee Care</span> లో మీరూ భాగస్వాములే.</h1>
-      <p class="hero__sub">Hyderabad లో ఉన్న మీ Parents కి Clinic visit, Doctor తో consultation, Treatment updates &mdash; ఇవన్నీ మేము Coordinate చేస్తాం. Dubai, UAE, Kuwait, USA ఎక్కడ ఉన్నా.</p>
+      <h1 data-en="Even from far away, you can be part of your parents’ knee care.">మీరు దూరంగా ఉన్నా, మీ <span class="en">Parents</span> <span class="en">Knee Care</span> లో మీరూ భాగస్వాములే.</h1>
+      <p class="hero__sub" data-en="We coordinate your parents’ clinic visit, doctor consultation and treatment updates in Hyderabad, wherever you are: Dubai, UAE, Kuwait or the USA.">Hyderabad లో ఉన్న మీ Parents కి Clinic visit, Doctor తో consultation, Treatment updates &mdash; ఇవన్నీ మేము Coordinate చేస్తాం. Dubai, UAE, Kuwait, USA ఎక్కడ ఉన్నా.</p>
       <div class="hero__cta">
-        <a class="btn btn--wa" data-wa="hero" href="#"><svg><use href="#wa"/></svg>WhatsApp లో మాట్లాడండి</a>
+        <a class="btn btn--wa" data-wa="hero" href="#"><svg><use href="#wa"/></svg><span data-en="Chat on WhatsApp">WhatsApp లో మాట్లాడండి</span></a>
         <a class="btn btn--ghost" data-call href="#"><svg><use href="#ph"/></svg><span data-callnum>+91 72728 97897</span></a>
       </div>
       <div class="hero__proof">
@@ -404,7 +421,7 @@ section[id]{scroll-margin-top:76px}
     </div>
     <div class="hero__art">
       <div class="hero__frame"><img src="assets/hero.jpg" width="768" height="1250" alt="Dubai terrace లో laptop తో ఉన్న కొడుకు, పక్కన Halcyon mascot Mokalu"></div>
-      <div class="hero__chip"><img src="assets/mokalu.jpg" alt="" width="46" height="46"><span><b>Mokalu</b>మా Knee mascot. మీ Parents కి తోడు.</span></div>
+      <div class="hero__chip"><img src="assets/mokalu.jpg" alt="" width="46" height="46"><span data-en="&lt;b&gt;Mokalu&lt;/b&gt;Our knee mascot, here for your parents."><b>Mokalu</b>మా Knee mascot. మీ Parents కి తోడు.</span></div>
     </div>
   </div>
 </section>
@@ -413,15 +430,15 @@ section[id]{scroll-margin-top:76px}
 <section class="sec" id="qa">
   <div class="wrap qa">
     <div>
-      <h2 class="h2">ఈ మూడు ప్రశ్నలు మీకూ వచ్చాయా?</h2>
-      <p class="lede">వాళ్లను Clinic కి ఎవరు తీసుకెళ్తారు? Doctor తో ఎవరు మాట్లాడతారు? Treatment గురించి మీకు ఎలా తెలుస్తుంది? మూడింటికీ జవాబు ఇదే.</p>
+      <h2 class="h2" data-en="Do these three questions sound familiar?">ఈ మూడు ప్రశ్నలు మీకూ వచ్చాయా?</h2>
+      <p class="lede" data-en="Who will take them to the clinic? Who will talk to the doctor? How will you find out about the treatment? Here are the answers.">వాళ్లను Clinic కి ఎవరు తీసుకెళ్తారు? Doctor తో ఎవరు మాట్లాడతారు? Treatment గురించి మీకు ఎలా తెలుస్తుంది? మూడింటికీ జవాబు ఇదే.</p>
       <div class="thread" id="thread" role="list">
-        <div class="msg msg--son" role="listitem"><img class="msg__av msg__av--son" src="assets/phone-tap.jpg" alt="" width="42" height="42"><div class="bub"><span class="who">మీరు</span>Amma ని Clinic కి ఎవరు తీసుకెళ్తారు?</div></div>
-        <div class="msg msg--mok" role="listitem"><img class="msg__av" src="assets/mokalu.jpg" alt="" width="42" height="42"><div class="bub"><span class="who">Mokalu</span>ఇంటి నుంచి Clinic కి, తిరిగి ఇంటికి &mdash; <b>Home Pickup &amp; Drop</b> మేమే arrange చేస్తాం.</div></div>
-        <div class="msg msg--son" role="listitem"><img class="msg__av msg__av--son" src="assets/phone-tap.jpg" alt="" width="42" height="42"><div class="bub"><span class="who">మీరు</span>Doctor తో నేను ఎలా మాట్లాడాలి?</div></div>
-        <div class="msg msg--mok" role="listitem"><img class="msg__av" src="assets/mokalu.jpg" alt="" width="42" height="42"><div class="bub"><span class="who">Mokalu</span>మీ Parents అనుమతితో, విదేశాల నుంచే <b>Video Consultation</b> లో Doctor తో మాట్లాడవచ్చు.</div></div>
-        <div class="msg msg--son" role="listitem"><img class="msg__av msg__av--son" src="assets/phone-tap.jpg" alt="" width="42" height="42"><div class="bub"><span class="who">మీరు</span>Treatment గురించి నాకెలా తెలుస్తుంది?</div></div>
-        <div class="msg msg--mok" role="listitem"><img class="msg__av" src="assets/mokalu.jpg" alt="" width="42" height="42"><div class="bub"><span class="who">Mokalu</span>Patient Consent తో Treatment Plan, Procedure, Recovery, Follow-up వివరాలు మీతో పంచుకుంటాం.</div></div>
+        <div class="msg msg--son" role="listitem"><img class="msg__av msg__av--son" src="assets/phone-tap.jpg" alt="" width="42" height="42"><div class="bub"><span class="who" data-en="You">మీరు</span><span data-en="Who will take Amma to the clinic?">Amma ని Clinic కి ఎవరు తీసుకెళ్తారు?</span></div></div>
+        <div class="msg msg--mok" role="listitem"><img class="msg__av" src="assets/mokalu.jpg" alt="" width="42" height="42"><div class="bub"><span class="who">Mokalu</span><span data-en="From home to the clinic and back again: we arrange &lt;b&gt;Home Pickup &amp;amp; Drop&lt;/b&gt;.">ఇంటి నుంచి Clinic కి, తిరిగి ఇంటికి &mdash; <b>Home Pickup &amp; Drop</b> మేమే arrange చేస్తాం.</span></div></div>
+        <div class="msg msg--son" role="listitem"><img class="msg__av msg__av--son" src="assets/phone-tap.jpg" alt="" width="42" height="42"><div class="bub"><span class="who" data-en="You">మీరు</span><span data-en="How do I talk to the doctor?">Doctor తో నేను ఎలా మాట్లాడాలి?</span></div></div>
+        <div class="msg msg--mok" role="listitem"><img class="msg__av" src="assets/mokalu.jpg" alt="" width="42" height="42"><div class="bub"><span class="who">Mokalu</span><span data-en="With your parents’ permission, you can talk to the doctor from abroad on a &lt;b&gt;Video Consultation&lt;/b&gt;.">మీ Parents అనుమతితో, విదేశాల నుంచే <b>Video Consultation</b> లో Doctor తో మాట్లాడవచ్చు.</span></div></div>
+        <div class="msg msg--son" role="listitem"><img class="msg__av msg__av--son" src="assets/phone-tap.jpg" alt="" width="42" height="42"><div class="bub"><span class="who" data-en="You">మీరు</span><span data-en="How will I know about the treatment?">Treatment గురించి నాకెలా తెలుస్తుంది?</span></div></div>
+        <div class="msg msg--mok" role="listitem"><img class="msg__av" src="assets/mokalu.jpg" alt="" width="42" height="42"><div class="bub"><span class="who">Mokalu</span><span data-en="With patient consent, we share the treatment plan, procedure, recovery and follow-up details with you.">Patient Consent తో Treatment Plan, Procedure, Recovery, Follow-up వివరాలు మీతో పంచుకుంటాం.</span></div></div>
       </div>
     </div>
 
@@ -429,7 +446,7 @@ section[id]{scroll-margin-top:76px}
       <video controls playsinline preload="none" poster="assets/skit-poster.jpg" aria-label="NRI Parent Knee Care గురించి Mokalu చెప్పే 50 సెకన్ల వీడియో">
         <source src="assets/mokalu-skit.mp4" type="video/mp4">
       </video>
-      <figcaption class="phone__cap"><b>50 సెకన్లలో Mokalu కథ.</b><br>Sound on చేసి చూడండి.</figcaption>
+      <figcaption class="phone__cap" data-en="&lt;b&gt;Mokalu’s story in 50 seconds.&lt;/b&gt;&lt;br&gt;Video is in Telugu. Turn the sound on."><b>50 సెకన్లలో Mokalu కథ.</b><br>Sound on చేసి చూడండి.</figcaption>
     </figure>
   </div>
 </section>
@@ -437,15 +454,15 @@ section[id]{scroll-margin-top:76px}
 <!-- ============ JOURNEY ============ -->
 <section class="sec sec--sand" id="how">
   <div class="wrap">
-    <h2 class="h2">మీ Parents Knee Care, అడుగడుగునా మీ తోడుగా</h2>
-    <p class="lede">NRI Parent Knee Care Program లో అందుబాటులో ఉన్న సేవలు.</p>
+    <h2 class="h2" data-en="Your parents’ knee care, with you at every step">మీ Parents Knee Care, అడుగడుగునా మీ తోడుగా</h2>
+    <p class="lede" data-en="Services available in the NRI Parent Knee Care Program.">NRI Parent Knee Care Program లో అందుబాటులో ఉన్న సేవలు.</p>
 
     <div class="journey">
       <div class="step">
         <div class="step__n">1</div>
         <div class="step__txt">
           <h3><em>Home Pickup &amp; Drop</em></h3>
-          <p>మీ Parents ని ఇంటి నుంచి Clinic కి తీసుకురావడానికి, Consultation పూర్తయిన తర్వాత తిరిగి ఇంటికి చేర్చడానికి Transport Arrangements చేస్తాం.</p>
+          <p data-en="We arrange transport to bring your parents from home to the clinic, and back home after the consultation.">మీ Parents ని ఇంటి నుంచి Clinic కి తీసుకురావడానికి, Consultation పూర్తయిన తర్వాత తిరిగి ఇంటికి చేర్చడానికి Transport Arrangements చేస్తాం.</p>
         </div>
         <div class="step__img"><img src="assets/pickup.jpg" loading="lazy" alt="Steering wheel తో Mokalu" style="object-position:50% 60%"></div>
       </div>
@@ -454,7 +471,7 @@ section[id]{scroll-margin-top:76px}
         <div class="step__n">2</div>
         <div class="step__txt">
           <h3><em>Medical Evaluation</em></h3>
-          <p>Doctor Consultation ద్వారా Knee Pain కి సంబంధించిన Clinical Assessment చేస్తాం. అవసరమైతే Standing Knee X-rays, ఇతర Imaging మరియు Basic Blood Investigations సూచిస్తాం.</p>
+          <p data-en="Through a doctor consultation, we carry out a clinical assessment of the knee pain. If needed, we advise standing knee X-rays, other imaging and basic blood investigations.">Doctor Consultation ద్వారా Knee Pain కి సంబంధించిన Clinical Assessment చేస్తాం. అవసరమైతే Standing Knee X-rays, ఇతర Imaging మరియు Basic Blood Investigations సూచిస్తాం.</p>
         </div>
       </div>
 
@@ -462,7 +479,7 @@ section[id]{scroll-margin-top:76px}
         <div class="step__n">3</div>
         <div class="step__txt">
           <h3><em>Video Consultation</em></h3>
-          <p>మీ Parents అనుమతితో, మీరు విదేశాల నుంచే Video Consultation లో పాల్గొని, వారి Knee Condition మరియు అందుబాటులో ఉన్న Treatment Options గురించి Doctor తో చర్చించవచ్చు.</p>
+          <p data-en="With your parents’ permission, you can join a video consultation from abroad and discuss their knee condition and the available treatment options with the doctor.">మీ Parents అనుమతితో, మీరు విదేశాల నుంచే Video Consultation లో పాల్గొని, వారి Knee Condition మరియు అందుబాటులో ఉన్న Treatment Options గురించి Doctor తో చర్చించవచ్చు.</p>
         </div>
         <div class="step__img"><img src="assets/phone-worry.jpg" loading="lazy" alt="ఫోన్ చూస్తున్న కొడుకు" style="object-position:50% 30%"></div>
       </div>
@@ -471,8 +488,8 @@ section[id]{scroll-margin-top:76px}
         <div class="step__n">4</div>
         <div class="step__txt">
           <h3><em>Individualized Knee Treatment</em></h3>
-          <p>Knee Osteoarthritis తీవ్రత, లక్షణాలు మరియు Patient Health Condition ఆధారంగా Non-Surgical మరియు ఇతర Appropriate Treatment Options గురించి వివరిస్తాం.</p>
-          <div class="callout">తగిన Patients లో, FDA-cleared Second generation <b>COOLIEF</b> Cooled Radiofrequency Technology ఉపయోగించే Genicular Radiofrequency Ablation వంటి Advanced Pain Management Procedures ని కూడా పరిగణించవచ్చు.</div>
+          <p data-en="Based on the severity of knee osteoarthritis, symptoms and the patient’s health condition, we explain non-surgical and other appropriate treatment options.">Knee Osteoarthritis తీవ్రత, లక్షణాలు మరియు Patient Health Condition ఆధారంగా Non-Surgical మరియు ఇతర Appropriate Treatment Options గురించి వివరిస్తాం.</p>
+          <div class="callout" data-en="In suitable patients, advanced pain management procedures such as Genicular Radiofrequency Ablation, using FDA-cleared second-generation &lt;b&gt;COOLIEF&lt;/b&gt; Cooled Radiofrequency Technology, may also be considered.">తగిన Patients లో, FDA-cleared Second generation <b>COOLIEF</b> Cooled Radiofrequency Technology ఉపయోగించే Genicular Radiofrequency Ablation వంటి Advanced Pain Management Procedures ని కూడా పరిగణించవచ్చు.</div>
         </div>
       </div>
 
@@ -480,7 +497,7 @@ section[id]{scroll-margin-top:76px}
         <div class="step__n">5</div>
         <div class="step__txt">
           <h3><em>Family Updates</em></h3>
-          <p>Patient Consent తో Treatment Plan, Procedure, Recovery మరియు Follow-up వివరాలను మీతో పంచుకుంటాం.</p>
+          <p data-en="With patient consent, we share the treatment plan, procedure, recovery and follow-up details with you.">Patient Consent తో Treatment Plan, Procedure, Recovery మరియు Follow-up వివరాలను మీతో పంచుకుంటాం.</p>
         </div>
         <div class="step__img"><img src="assets/thumbs.jpg" loading="lazy" alt="Thumbs up చూపిస్తున్న Mokalu" style="object-position:50% 55%"></div>
       </div>
@@ -492,10 +509,10 @@ section[id]{scroll-margin-top:76px}
 <section class="visit" id="visit">
   <div class="wrap visit__grid">
     <div>
-      <h2 class="h2">Hyderabad కి వస్తున్నారా? మీ Knee కోసం కూడా.</h2>
-      <p>విదేశాల్లో నివసిస్తూ Hyderabad కి వచ్చే వ్యక్తులు కూడా తమ Knee Pain Evaluation మరియు అవసరమైన Treatment కోసం ముందుగానే Appointment Arrange చేసుకోవచ్చు.</p>
+      <h2 class="h2" data-en="Visiting Hyderabad? Your knees too.">Hyderabad కి వస్తున్నారా? మీ Knee కోసం కూడా.</h2>
+      <p data-en="NRIs who live abroad and visit Hyderabad can also arrange an appointment in advance for their own knee pain evaluation and any treatment needed.">విదేశాల్లో నివసిస్తూ Hyderabad కి వచ్చే వ్యక్తులు కూడా తమ Knee Pain Evaluation మరియు అవసరమైన Treatment కోసం ముందుగానే Appointment Arrange చేసుకోవచ్చు.</p>
     </div>
-    <a class="btn btn--wa" data-wa="visit" href="#"><svg><use href="#wa"/></svg>ముందే Appointment అడగండి</a>
+    <a class="btn btn--wa" data-wa="visit" href="#"><svg><use href="#wa"/></svg><span data-en="Ask for an appointment">ముందే Appointment అడగండి</span></a>
   </div>
 </section>
 
@@ -503,17 +520,17 @@ section[id]{scroll-margin-top:76px}
 <section class="sec" id="hours">
   <div class="wrap hours">
     <div>
-      <h2 class="h2">మీ దేశంలో Clinic ఎప్పుడు తెరిచి ఉంటుంది?</h2>
-      <p class="lede">Call చేయాలంటే మీ సమయంలో ఎప్పుడు సరిపోతుందో చూడండి.</p>
+      <h2 class="h2" data-en="When is the clinic open in your country?">మీ దేశంలో Clinic ఎప్పుడు తెరిచి ఉంటుంది?</h2>
+      <p class="lede" data-en="See which hours work in your time zone before you call.">Call చేయాలంటే మీ సమయంలో ఎప్పుడు సరిపోతుందో చూడండి.</p>
       <div class="zones" id="zones" role="group" aria-label="మీ ప్రాంతం ఎంచుకోండి"></div>
     </div>
     <div class="hcard" aria-live="polite">
-      <div class="hrow"><span>Hyderabad లో</span><strong>9:00 am &ndash; 5:00 pm</strong></div>
+      <div class="hrow"><span data-en="In Hyderabad">Hyderabad లో</span><strong>9:00 am &ndash; 5:00 pm</strong></div>
       <div class="hrow"><span id="zl">మీ దగ్గర</span><strong id="zt">--</strong></div>
       <div class="day" id="day" aria-hidden="true"><i></i><i></i><u></u></div>
       <div class="dayticks" aria-hidden="true"><span>12 am</span><span>6 am</span><span>12 pm</span><span>6 pm</span><span>12 am</span></div>
       <div class="status" id="status"><i></i><span>--</span></div>
-      <p class="hnote">Clinic సోమవారం నుంచి శుక్రవారం వరకు. WhatsApp లో ఎప్పుడైనా message పంపవచ్చు.</p>
+      <p class="hnote" data-en="The clinic is open Monday to Friday. You can message us on WhatsApp at any time.">Clinic సోమవారం నుంచి శుక్రవారం వరకు. WhatsApp లో ఎప్పుడైనా message పంపవచ్చు.</p>
     </div>
   </div>
 </section>
@@ -521,7 +538,7 @@ section[id]{scroll-margin-top:76px}
 <!-- ============ DOCTORS ============ -->
 <section class="sec sec--sand" id="doctors">
   <div class="wrap">
-    <h2 class="h2">Halcyon లోని Pain Management Doctors</h2>
+    <h2 class="h2" data-en="Pain Management doctors at Halcyon">Halcyon లోని Pain Management Doctors</h2>
     <div class="drs">
       <article class="dr">
         <img src="assets/dr-0.png" loading="lazy" alt="Dr. Pallavi Dasyam" width="104" height="140">
@@ -539,12 +556,12 @@ section[id]{scroll-margin-top:76px}
 <section class="final" id="contact">
   <div class="wrap">
     <img class="final__mok" src="assets/mokalu.jpg" alt="" width="112" height="112">
-    <h2 class="h2">మీరు దూరంగా ఉన్నా, మేము తోడుగా ఉంటాం.</h2>
+    <h2 class="h2" data-en="Even when you are far away, we are by your side.">మీరు దూరంగా ఉన్నా, మేము తోడుగా ఉంటాం.</h2>
     <a class="final__num" data-call href="#"><span data-callnum>+91 72728 97897</span></a>
     <p class="final__lab">Dedicated NRI Parent Care Contact &middot; Call / WhatsApp</p>
     <div class="final__cta">
-      <a class="btn btn--wa" data-wa="final" href="#"><svg><use href="#wa"/></svg>WhatsApp లో మాట్లాడండి</a>
-      <a class="btn btn--ghost" data-call href="#"><svg><use href="#ph"/></svg>Call చేయండి</a>
+      <a class="btn btn--wa" data-wa="final" href="#"><svg><use href="#wa"/></svg><span data-en="Chat on WhatsApp">WhatsApp లో మాట్లాడండి</span></a>
+      <a class="btn btn--ghost" data-call href="#"><svg><use href="#ph"/></svg><span data-en="Call now">Call చేయండి</span></a>
     </div>
 
     <div class="foot">
@@ -552,7 +569,7 @@ section[id]{scroll-margin-top:76px}
         <address>
           <b style="color:#fff">Halcyon Pain Management Centre</b><br>
           3rd Floor, KKR Commercial Complex, Kukatpally Y Junction, Moosapet Road, Hyderabad, Telangana 500072<br>
-          <a href="https://www.google.com/maps/search/?api=1&amp;query=Halcyon+Pain+Management+Centre+Kukatpally+Hyderabad" target="_blank" rel="noopener">Google Maps లో చూడండి</a>
+          <a href="https://www.google.com/maps/search/?api=1&amp;query=Halcyon+Pain+Management+Centre+Kukatpally+Hyderabad" target="_blank" rel="noopener" data-en="View on Google Maps">Google Maps లో చూడండి</a>
         </address>
         <p class="ins"><b>Insurance:</b> Some treatments may be eligible for cashless insurance, subject to insurance rules and regulations. We can assist with the insurance process &mdash; ask our team when you call.</p>
       </div>
@@ -602,6 +619,24 @@ section[id]{scroll-margin-top:76px}
       .formatToParts(d).forEach(function(p){o[p.type]=p.value}); return o;
   }
 
+  /* ---- language (Telugu default; remembers choice; ?lang=en for English links) ---- */
+  var lang="te";
+  try{ var q=(location.search.match(/[?&]lang=(te|en)/)||[])[1]; lang=q||localStorage.getItem("halcyon-nri-lang")||"te"; }catch(e){}
+  var META_EN={title:"NRI Parent Knee Care | Halcyon Pain Management Centre, Hyderabad",
+    desc:"Living in Dubai, UAE, Kuwait or the USA? We coordinate your parents’ knee care in Hyderabad: home pickup and drop, video consultation, family updates. Halcyon Pain Management Centre, Kukatpally."};
+  var metaD=$('meta[name="description"]'), META_TE={title:document.title, desc:metaD.getAttribute("content")};
+  $$("[data-en]").forEach(function(el){ el.setAttribute("data-te",el.innerHTML); });
+  function applyLang(){
+    document.documentElement.lang=lang;
+    $$("[data-en]").forEach(function(el){ el.innerHTML = lang==="en" ? el.getAttribute("data-en") : el.getAttribute("data-te"); });
+    var m=lang==="en"?META_EN:META_TE; document.title=m.title; metaD.setAttribute("content",m.desc);
+    $$(".lang button").forEach(function(b){ b.setAttribute("aria-pressed", b.getAttribute("data-l")===lang?"true":"false"); });
+  }
+  $$(".lang button").forEach(function(b){ b.addEventListener("click",function(){
+    lang=b.getAttribute("data-l"); try{localStorage.setItem("halcyon-nri-lang",lang)}catch(e){}
+    applyLang(); render();
+  }); });
+
   /* ---- hero clocks ---- */
   $("#c1n").textContent=city(userTz);
   function tick(){ var n=new Date(); $("#c1t").textContent=hm(n,userTz); $("#c2t").textContent=hm(n,"Asia/Kolkata"); }
@@ -633,9 +668,9 @@ section[id]{scroll-margin-top:76px}
     var open =new Date(Date.UTC(y,m-1,d,3,30));    /* 09:00 IST */
     var close=new Date(Date.UTC(y,m-1,d,11,30));   /* 17:00 IST */
     var po=parts(open,sel.tz), pc=parts(close,sel.tz), pi=parts(open,"Asia/Kolkata");
-    function tag(p,ref){ var a=p.year+p.month+p.day, b=ref.year+ref.month+ref.day; return a<b?"ముందు రోజు":(a>b?"మరుసటి రోజు":""); }
+    function tag(p,ref){ var a=p.year+p.month+p.day, b=ref.year+ref.month+ref.day; return a<b?(lang==="en"?"previous day":"ముందు రోజు"):(a>b?(lang==="en"?"next day":"మరుసటి రోజు"):""); }
     var to=tag(po,pi), tc=tag(pc,pi);
-    $("#zl").textContent=sel.k+" లో";
+    $("#zl").textContent=lang==="en"?"In "+sel.k:sel.k+" లో";
     $("#zt").innerHTML=hm(open,sel.tz)+(to?" <small>"+to+"</small>":"")+" &ndash; "+hm(close,sel.tz)+(tc?" <small>"+tc+"</small>":"");
 
     /* 24-hour strip in the chosen city's own clock */
@@ -647,9 +682,9 @@ section[id]{scroll-margin-top:76px}
     var wd=ist.weekday, mins=(+ist.hour)*60+(+ist.minute);
     var isOpen=["Mon","Tue","Wed","Thu","Fri"].indexOf(wd)>-1 && mins>=540 && mins<1020;
     var st=$("#status"); st.className="status"+(isOpen?" is-open":"");
-    st.lastChild.textContent=isOpen?"ఇప్పుడు Clinic తెరిచి ఉంది. Call చేయవచ్చు.":"ఇప్పుడు Clinic మూసి ఉంది. WhatsApp లో message పంపండి.";
+    st.lastChild.textContent=lang==="en"?(isOpen?"The clinic is open now. You can call.":"The clinic is closed now. Send a WhatsApp message."):(isOpen?"ఇప్పుడు Clinic తెరిచి ఉంది. Call చేయవచ్చు.":"ఇప్పుడు Clinic మూసి ఉంది. WhatsApp లో message పంపండి.");
   }
-  render(); setInterval(render,60000);
+  applyLang(); render(); setInterval(render,60000);
 
   /* ---- Q&A thread plays once when it scrolls into view ---- */
   var th=$("#thread");
