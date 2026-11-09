@@ -299,6 +299,29 @@ html[lang=en] .hero__sub,html[lang=en] .lede,html[lang=en] .step p,html[lang=en]
 .ins b{color:#fff}
 .disc{font-size:13px;line-height:1.7;color:rgba(255,255,255,.58);max-width:60em}
 
+/* ---------- video + testimonials ---------- */
+.vframe{position:relative;max-width:880px;margin-top:32px;aspect-ratio:16/9;border-radius:22px;overflow:hidden;background:var(--night);
+  box-shadow:0 30px 60px -30px rgba(22,21,61,.55)}
+.vframe iframe,.vframe .vbtn{position:absolute;inset:0;width:100%;height:100%;border:0;display:block}
+.vbtn{padding:0;background:var(--night);cursor:pointer}
+.vbtn img{width:100%;height:100%;object-fit:cover;opacity:.92;transition:opacity .3s var(--ease),transform .6s var(--ease)}
+.vbtn:hover img{opacity:1;transform:scale(1.02)}
+.vbtn::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(22,21,61,0) 55%,rgba(22,21,61,.55))}
+.vplay{position:absolute;left:50%;top:50%;z-index:1;width:76px;height:76px;margin:-38px 0 0 -38px;border-radius:50%;
+  background:var(--rose-500);display:grid;place-items:center;box-shadow:0 14px 34px -8px rgba(0,0,0,.6);transition:transform .3s var(--ease),background-color .3s var(--ease)}
+.vbtn:hover .vplay{transform:scale(1.07);background:var(--rose-400)}
+.vplay svg{width:30px;height:30px;margin-left:4px;fill:#fff}
+.vmeta{margin-top:14px;font-family:var(--te);font-size:14.5px;line-height:1.8;color:var(--muted)}
+.quotes{margin-top:40px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.quote{margin:0;display:flex;flex-direction:column;background:#fff;border:1px solid var(--stone);border-radius:22px;padding:26px 24px 22px}
+.quote .stars{color:#F2A900;font-size:17px;letter-spacing:2px;line-height:1}
+.quote blockquote{margin:16px 0 0;flex:1;font-family:var(--serif-i);font-style:italic;font-weight:500;font-size:19px;line-height:1.6;color:var(--ink)}
+.quote figcaption{margin-top:20px;padding-top:16px;border-top:1px solid var(--stone);font-family:var(--sans);font-size:14.5px;line-height:1.5;color:var(--muted)}
+.quote figcaption b{display:block;color:var(--ink);font-weight:700;font-size:15.5px}
+.qfoot{margin-top:26px;display:flex;flex-wrap:wrap;gap:12px 22px;align-items:center}
+.qfoot p{font-family:var(--te);font-size:14px;line-height:1.8;color:var(--muted);max-width:34em}
+@media (max-width:900px){.quotes{grid-template-columns:1fr}}
+
 /* ---------- sticky action bar (phones) ---------- */
 .bar{
   position:fixed;left:0;right:0;bottom:0;z-index:60;display:none;gap:10px;
@@ -413,7 +436,7 @@ html[lang=en] .hero__sub,html[lang=en] .lede,html[lang=en] .step p,html[lang=en]
         <a class="btn btn--ghost" data-call href="#"><svg><use href="#ph"/></svg><span data-callnum>+91 72728 97897</span></a>
       </div>
       <div class="hero__proof">
-        <span><i></i>4.9 &#9733; from 877 Google reviews</span>
+        <span><i></i>4.9 &#9733; from 876 Google reviews</span>
         <span><i></i>Day-care, local anaesthetic</span>
         <span><i></i>Kukatpally, Hyderabad</span>
       </div>
@@ -495,6 +518,49 @@ html[lang=en] .hero__sub,html[lang=en] .lede,html[lang=en] .step p,html[lang=en]
         </div>
         <div class="step__img"><img src="assets/real/hero.jpg" loading="lazy" alt="Man reading updates on his phone from abroad" style="object-position:75% 40%"></div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROCEDURE VIDEO ============ -->
+<section class="sec" id="video">
+  <div class="wrap">
+    <h2 class="h2" data-en="Knee treatment, explained by Dr. Pallavi">Knee Treatment గురించి Dr. Pallavi గారి మాటల్లో</h2>
+    <p class="lede" data-en="A video of about 9 minutes from Halcyon’s YouTube channel.">Halcyon YouTube channel నుంచి, సుమారు 9 నిమిషాల వీడియో.</p>
+    <div class="vframe">
+      <button class="vbtn" id="vid" type="button" aria-label="Play video: Dr Pallavi about knee treatment">
+        <img src="https://i.ytimg.com/vi/MGOEudHzxwU/hqdefault.jpg" alt="" loading="lazy" decoding="async" width="480" height="360">
+        <span class="vplay" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 4l14 8-14 8z"/></svg></span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIALS ============ -->
+<section class="sec sec--sand" id="stories">
+  <div class="wrap">
+    <h2 class="h2" data-en="What patients say">రోగులు ఏమంటున్నారు</h2>
+    <p class="lede" data-en="Rated 4.9 from 876 Google reviews.">Google లో 876 reviews, rating 4.9.</p>
+    <div class="quotes">
+      <figure class="quote">
+        <div class="stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <blockquote lang="en">&ldquo;I have been suffering with knee pain since 2 years&hellip; they treat very well and staff also receiving well.&rdquo;</blockquote>
+        <figcaption><b>Jenny V., Nellore</b>Knee pain &middot; Google review</figcaption>
+      </figure>
+      <figure class="quote">
+        <div class="stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <blockquote lang="en">&ldquo;Dr. Pallavi Madam carefully listened to all my concerns and explained the possible approach patiently.&rdquo;</blockquote>
+        <figcaption><b>Ganesh T</b>Google review</figcaption>
+      </figure>
+      <figure class="quote">
+        <div class="stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <blockquote lang="en">&ldquo;The doctors listen patiently, explain the treatment clearly, and focus on long-term pain relief rather than just temporary solutions.&rdquo;</blockquote>
+        <figcaption><b>Chinta Praveen Kumar</b>Google review</figcaption>
+      </figure>
+    </div>
+    <div class="qfoot">
+      <a class="btn btn--line" href="https://www.google.com/search?q=halcyon+pain+management+centre#lrd=0x3bcb91b2582cd96b:0xc5d32ed43825c5fd,1,,,," target="_blank" rel="noopener" data-en="Read all reviews on Google">Google లో అన్ని reviews చూడండి</a>
+      <p data-en="Excerpts from Google reviews. Individual experiences vary.">ఇవి Google reviews నుంచి ఎంచుకున్న వ్యాఖ్యలు. వ్యక్తిగత అనుభవాలు మారవచ్చు.</p>
     </div>
   </div>
 </section>
@@ -612,6 +678,16 @@ html[lang=en] .hero__sub,html[lang=en] .lede,html[lang=en] .step p,html[lang=en]
     var o={}; new Intl.DateTimeFormat("en-US",{timeZone:tz,year:"numeric",month:"2-digit",day:"2-digit",hour:"2-digit",minute:"2-digit",weekday:"short",hourCycle:"h23"})
       .formatToParts(d).forEach(function(p){o[p.type]=p.value}); return o;
   }
+
+  /* ---- YouTube click-to-load (same video as the old landing page) ---- */
+  var vid=$("#vid");
+  if(vid) vid.addEventListener("click",function(){
+    var f=document.createElement("iframe");
+    f.src="https://www.youtube-nocookie.com/embed/MGOEudHzxwU?autoplay=1&rel=0&playsinline=1";
+    f.allow="accelerometer;autoplay;encrypted-media;gyroscope;picture-in-picture";
+    f.setAttribute("allowfullscreen",""); f.title="Dr Pallavi about knee treatment, Halcyon Pain Management Centre";
+    vid.replaceWith(f);
+  });
 
   /* ---- language (Telugu default; remembers choice; ?lang=en for English links) ---- */
   var lang="te";
