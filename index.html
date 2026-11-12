@@ -377,6 +377,37 @@ html[lang=en] .hero__sub,html[lang=en] .lede,html[lang=en] .step p,html[lang=en]
   .thread .msg{opacity:1;transform:none;transition:none}
 }
 </style>
+<!-- Meta Pixel: dataset "Dubai" 1517402476875662 -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1517402476875662');
+fbq('track','PageView');
+(function(){
+  var page=(location.pathname.split('/').pop()||'index.html');
+  function ev(name,params,id){try{fbq('track',name,params||{},id?{eventID:id}:undefined)}catch(e){}}
+  function evc(name,params){try{fbq('trackCustom',name,params||{})}catch(e){}}
+  document.addEventListener('click',function(e){
+    var a=e.target.closest&&e.target.closest('[data-wa],[data-call],#vid');
+    if(!a)return;
+    if(a.hasAttribute('data-wa')){
+      ev('Contact',{content_name:'whatsapp',content_category:a.getAttribute('data-wa'),page:page});
+      ev('Lead',{content_name:'whatsapp_click',content_category:a.getAttribute('data-wa'),page:page});
+    }else if(a.hasAttribute('data-call')){
+      ev('Contact',{content_name:'call',page:page});
+    }else if(a.id==='vid'){
+      evc('VideoPlay',{content_name:'Dr Pallavi knee treatment',page:page});
+    }
+  },true);
+  var fired={};
+  addEventListener('scroll',function(){
+    var h=document.documentElement,p=Math.round((scrollY+innerHeight)/h.scrollHeight*100);
+    [50,90].forEach(function(t){if(p>=t&&!fired[t]){fired[t]=1;evc('Scroll'+t,{page:page})}});
+  },{passive:true});
+  setTimeout(function(){evc('Engaged30s',{page:page})},30000);
+})();
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1517402476875662&ev=PageView&noscript=1"/></noscript>
+<!-- End Meta Pixel -->
 </head>
 
 <body>
